@@ -1,0 +1,147 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | צרו קשר</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+<div class="container">
+	<div class="navbar">
+
+		<div class="logo">
+			<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+		</div>
+
+		<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						echo'<a href="logout.php" class="btn-navbar-login" style="margin-left: 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+		
+		<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><u><a href="contact.html">צרו קשר</a></u></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+						<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><u><a href="contact.html">צרו קשר</a></u></li>
+						<li><a href="login.html">משתמש</a></li>
+					</ul>
+				</nav>';
+				 }
+			?>
+		<a href="cart.html" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+		<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+	</div>
+</div>
+
+	<!---------contact page---------->
+	<div class="contact_page">
+		<div class="container">
+			<div class="row">
+				<div class="col-2">
+					<div class="contact-container">
+						<h1>צרו איתי קשר😁</h1>
+						<h2>צרו איתי קשר ואשמח לענות על כל שאלה</h2>
+						<div class="contact-form">
+							<form id="contact-form" method="post" action="contact.php">
+								<input type="text" name="name" placeholder="שם " required>
+								<br>
+								<input type="text" name="email" placeholder="אימייל" required>
+								<br>
+								<textarea name="message" placeholder="הודעה" required></textarea>
+								<br>
+								<input class="btn" type="submit" value="שלך הודעה">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<img src="images/image1.png" width="100%">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script>
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+</script>
+</body>
+</html>

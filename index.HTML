@@ -1,0 +1,271 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | בית</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+	<div class="container">
+		<div class="navbar fade-in">
+
+			<div class="logo">
+				<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+			</div>
+
+			<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						$userName = $_SESSION['userUid'];
+						echo'<a href="logout.php" class="btn-navbar-login" style="margin: 0 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+			
+			<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><u><a href="index.HTML"> בית</a></u></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+						<nav>
+							<ul id="MenuItems">
+								<li><u><a href="index.HTML"> בית</a></u></li>
+								<li><a href="products.html">מוצרים </a></li>
+								<li><a href="portfolio.html">תיק עבודות</a></li>
+								<li><a href="about.html">אודות</a></li>
+								<li><a href="contact.html">צרו קשר</a></li>
+								<li><a href="login.html">משתמש</a></li>
+							</ul>
+						</nav>';
+				 }
+			?>
+			<a href="cart.html" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+			<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+		</div>
+	</div>
+
+	<div class="row" style="height: auto; margin: 0 60px 0 60px; padding-bottom: 60px;">
+		<div class="col-2 fade-in">
+			<h1>ברוכים הבאים לMatukoCustom</h1>
+			<p>
+				צריכים לקנות מתנה מקורית?, סתם רוצים לפנק את
+				עצמכם עם איזה דיוקן יפה לתלות בחדר?. החלטתם שנמעס לכם
+				מהנעלים הרגילות שכולם לובשים והחלטתם שבא לכם אחד בעיצוב אישי?,
+				רק שלכם ולא של אף אחד אחר בעולם?. או שראיתם שלכל אחד היום יש בובת
+				פופ משלו ואמרתם לעצמכם... היי גם לי בא אחד. אז הגעתם למקום הנכון.
+			</p>
+			<a href="products.html" class="btn">למוצרים  ⇦</a>
+		</div>
+		<div class="col-2 fade-in">
+			<img src="images/image2.png">
+		</div>
+	</div>
+</div>
+
+<!--------featured categories-------->
+<div class="categories">
+	<a href="portfolio.html"><h2 class="title fade-in">עבודות</h2></a>
+	<div class="small-container portfolio">
+		<div class="row">
+			<div class="col-3 slide-in from-right">
+				<a href="portraits.html">
+				<h4>דיוקנים</h4>
+				<img src="images/category-1.png">
+				</a>
+			</div>
+
+			<div class="col-3 slide-in from-right">
+				<a href="portfolio-logos.html">
+				<h4>לוגואים</h4>
+				<img src="images/category-2.png">
+				</a>
+			</div>
+
+			<div class="col-3 slide-in from-right">
+				<a href="">
+				<h4>ביגוד</h4>
+				<img src="images/category-3.png">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------featured products-------->
+<div class="small-container">
+	<a href="products.html"><h2 class="title fade-in">מוצרים</h2></a>
+	<div class="row">
+		<div class="col-4 slide-in from-right">
+			<a href="head_drawing.html"><img src="images/product-1.png"></a>
+			<h4>דיוקן (ראש בלבד)</h4>
+			<p>70₪</p>
+		</div>
+
+		<div class="col-4 slide-in from-right">
+			<a href="shoulders_drawing.html"><img src="images/product-2.png"></a>
+			<h4>דיוקן (כתפיים ומעלה)</h4>
+			<p>80₪</p>
+		</div>
+
+		<div class="col-4 slide-in from-right">
+			<a href="waistup_drawings.html"><img src="images/product-3.png"></a>
+			<h4>דיוקן (מותניים ומעלה)</h4>
+			<p>100₪</p>
+		</div>
+
+		<div class="col-4 slide-in from-right">
+			<a href="fullbody_drawings.html"><img src="images/product-4.png"></a>
+			<h4>דיוקן (כל הגוף)</h4>
+			<p>120₪</p>
+		</div>
+	</div>
+</div>
+
+<!--------offer-------->
+<div class="offer">
+	<div class="small-container">
+		<div class="row">
+			<div class="col-5 fade-in">
+				<img src="images/new.png" class="offer-img">
+			</div>
+			<div class="col-5 slide-in from-right">
+				<p> חדש  בMatukoCustom</p>
+				<h1>פאנקו פופ בעיצוב אישי</h1>
+				<small></small>
+				<a href="" class="btn">קנו עכשיו ⇦</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------payment methods-------->
+<div class="payment">
+	<div class="small-container fade-in">
+	<h2 class="title">דרכי תשלום</h2>
+		<div class="row">
+			<div class="col-6">
+				<img src="images/logo-visa.png">
+			</div>
+			<div class="col-6">
+				<img src="images/logo-mastercard.png">
+			</div>
+			<div class="col-6">
+				<img src="images/logo-americanexpress.png">
+			</div>
+			<div class="col-6">
+				<img src="images/logo-paypal.png">
+			</div>
+			<div class="col-6">
+				<img src="images/logo-stripe.png">
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="https://www.facebook.com/Matuko-Custom-106605464515105/" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script type="text/javascript">
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+
+
+
+	const faders = document.querySelectorAll('.fade-in');
+	const sliders = document.querySelectorAll('.slide-in');
+
+	const appearOptions = {
+		threshold: 0,
+		rootMargin: "0px 0px -250px 0px"
+	};
+
+	const appearOnScroll = new IntersectionObserver
+	(function(
+		entries,
+		appearOnScroll
+	) {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			} else{
+				entry.target.classList.add('appear');
+				appearOnScroll.unobserve(entry.target);
+			}
+		})
+	},
+	appearOptions);
+
+	faders.forEach(fader => {
+		appearOnScroll.observe(fader);
+	});
+
+	sliders.forEach(slider => {
+		appearOnScroll.observe(slider);
+	});
+</script>
+</body>
+</html>

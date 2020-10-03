@@ -1,0 +1,293 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | מוצרים</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+<div class="container">
+	<div class="navbar">
+
+		<div class="logo">
+			<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+		</div>
+
+		<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						echo'<a href="logout.php" class="btn-navbar-login" style="margin-left: 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+		
+		<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><u><a href="products.html">מוצרים </a></u></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+						<nav>
+							<ul id="MenuItems">
+								<li><a href="index.HTML"> בית</a></li>
+								<li><u><a href="products.html">מוצרים </a></u></li>
+								<li><a href="portfolio.html">תיק עבודות</a></li>
+								<li><a href="about.html">אודות</a></li>
+								<li><a href="contact.html">צרו קשר</a></li>
+								<li><a href="login.html">משתמש</a></li>
+							</ul>
+						</nav>';
+				 }
+			?>
+		<a href="cart.html" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+		<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+	</div>
+</div>
+</div>
+
+<?php
+	if (isset($_SESSION['userUid'])){
+	echo'
+		<div class="small-container">
+			<div class="row row-2 fade-in">
+				<h2>כל המוצרים</h2>
+				<select>
+					<option>כל המוצרים</option>
+					<option>מוצרים בעיצוב אישי</option>
+					<option>חולצות</option>
+					<option>מארזים ומתנות</option>
+					<option>פוסטרים</option>
+					<option>דמויות 3D</option>
+				</select>
+			</div>
+		<!----------row 1----------->
+			<div class="row row-3">
+				<div class="col-4 slide-in">
+					<a href="head_drawing.html"><img src="images/product-1.png"></a>
+					<h4>דיוקן (ראש בלבד)</h4>
+					<p><s>69₪</s> <b>62₪</b></p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="shoulders_drawing.html"><img src="images/product-2.png"></a>
+					<h4>דיוקן (כתפיים ומעלה)</h4>
+					<p><s>79₪</s> <b>71₪</b></p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="waistup_drawings.html"><img src="images/product-3.png"></a>
+					<h4>דיוקן (מותניים ומעלה)</h4>
+					<p><s>99₪</s> <b>89₪</b></p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="fullbody_drawings.html"><img src="images/product-4.png"></a>
+					<h4>דיוקן (כל הגוף)</h4>
+					<p><s>119₪</s> <b>107₪</b></p>
+				</div>
+			</div>
+		<!----------row 2----------->
+			<div class="row row-3">
+				<div class="col-4 slide-in">
+					<a href="logos.html"><img src="images/category-2.png"></a>
+					<h4>לוגואים אישיים</h4>
+					<p><s>69₪</s> <b>62₪</b></p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href=""><img src="images/category-3.png"></a>
+					<h4>עיצוב נעליים אישי<h4>
+					<p>*מחיר מותאם אישית*</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href=""><img src="images/funko-pop-images/pop1.png"></a>
+					<h4>פאנקו פופ בעיצוב אישי</h4>
+					<p><s>59₪</s> <b>53₪</b></p>
+				</div>
+
+				<div class="col-4 slide-in" style="opacity: 0">
+					<a href=""><img src="images/product-4.jpg"></a>
+					<h4>דיוקן (כל הגוף)</h4>
+					<p><s>119₪</s> <b>107₪</b></p>
+				</div>
+			</div>
+		</div>';
+	}
+
+	else {
+		echo'
+		<div class="small-container">
+			<div class="row row-2 fade-in">
+				<h2>כל המוצרים</h2>
+				<h3>*10% הנחה ללקוחות רשומים*</h3>
+				<select>
+					<option>כל המוצרים</option>
+					<option>מוצרים בעיצוב אישי</option>
+					<option>חולצות</option>
+					<option>מארזים ומתנות</option>
+					<option>פוסטרים</option>
+					<option>דמויות 3D</option>
+				</select>
+			</div>
+		<!----------row 1----------->
+			<div class="row row-3">
+				<div class="col-4 slide-in">
+					<a href="head_drawing.html"><img src="images/product-1.png"></a>
+					<h4>דיוקן (ראש בלבד)</h4>
+					<p>69₪</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="shoulders_drawing.html"><img src="images/product-2.png"></a>
+					<h4>דיוקן (כתפיים ומעלה)</h4>
+					<p>79₪</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="waistup_drawings.html"><img src="images/product-3.png"></a>
+					<h4>דיוקן (מותניים ומעלה)</h4>
+					<p>99₪</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href="fullbody_drawings.html"><img src="images/product-4.png"></a>
+					<h4>דיוקן (כל הגוף)</h4>
+					<p>119₪</p>
+				</div>
+			</div>
+		<!----------row 2----------->
+			<div class="row row-3">
+				<div class="col-4 slide-in">
+					<a href="logos.html"><img src="images/category-2.png"></a>
+					<h4>לוגואים אישיים</h4>
+					<p>69₪</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href=""><img src="images/category-3.png"></a>
+					<h4>עיצוב נעליים אישי<h4>
+					<p>*מחיר מותאם אישית*</p>
+				</div>
+
+				<div class="col-4 slide-in">
+					<a href=""><img src="images/funko-pop-images/pop1.png"></a>
+					<h4>פאנקו פופ בעיצוב אישי</h4>
+					<p>59₪</p>
+				</div>
+
+				<div class="col-4 slide-in" style="opacity: 0">
+					<a href=""><img src="images/product-4.jpg"></a>
+					<h4>דיוקן (כל הגוף)</h4>
+					<p>119₪</p>
+				</div>
+			</div>
+		</div>';
+	}
+?>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script>
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+
+
+	const faders = document.querySelectorAll('.fade-in');
+	const sliders = document.querySelectorAll('.slide-in');
+
+	const appearOptions = {
+		threshold: 0,
+		rootMargin: "0px 0px -250px 0px"
+	};
+
+	const appearOnScroll = new IntersectionObserver
+	(function(
+		entries,
+		appearOnScroll
+	) {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			} else{
+				entry.target.classList.add('appear');
+				appearOnScroll.unobserve(entry.target);
+			}
+		})
+	},
+	appearOptions);
+
+	faders.forEach(fader => {
+		appearOnScroll.observe(fader);
+	});
+
+	sliders.forEach(slider => {
+		appearOnScroll.observe(slider);
+	});
+</script>
+</body>
+</html>

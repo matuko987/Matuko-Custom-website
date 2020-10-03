@@ -1,0 +1,257 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | סל קניות</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+<div class="container">
+	<div class="navbar">
+
+		<div class="logo">
+			<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+		</div>
+
+		<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						echo'<a href="logout.php" class="btn-navbar-login" style="margin-left: 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+		
+		<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+					<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+						<li><a href="login.html">משתמש</a></li>
+					</ul>
+				</nav>';
+				 }
+			?>
+		<a href="" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+		<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+	</div>
+</div>
+</div>
+
+<!----------cart items deatails------------->
+<div class="small-container cart-page">
+	<table class="cart-items">
+
+		<tr>
+			<th>סה"כ</th>
+			<th>כמות</th>
+			<th>מוצר</th>
+		</tr>
+
+		<tr class="cart-row">
+			<td class="left">
+				70₪
+			</td>
+			<td><input type="number" value="1" class="cart-quantity-input"></td>
+			<td>
+				<div class="cart-info">
+					<img src="images/head_images/head1.png">
+					<div>
+						<p>דיוקן אישי (ראש בלבד)</p>
+						<small class="cart-price">מחיר: 70₪</small>
+						<br>
+						<button class="remove">הסרה</button>
+					</div>
+				</div>
+			</td>
+		</tr>
+
+		<tr class="cart-row">
+			<td class="left">
+				80₪
+			</td>
+			<td><input type="number" value="1" class="cart-quantity-input"></td>
+			<td>
+				<div class="cart-info">
+					<img src="images/shoulders_images/shoulder1.png">
+					<div>
+						<p>דיוקן אישי (כתפיים ומעלה)</p>
+						<small class="cart-price">מחיר: 80₪</small>
+						<br>
+						<button class="remove">הסרה</button>
+					</div>
+				</div>
+			</td>
+		</tr>	
+
+		<tr class="cart-row">
+			<td class="left">
+				70₪
+			</td>
+			<td><input type="number" value="1" class="cart-quantity-input"></td>
+			<td>
+				<div class="cart-info">
+					<img src="images/logo_images/logo1.png">
+					<div>
+						<p>לוגואים אישיים</p>
+						<small>מחיר:</small><small class="cart-price">70₪</small>
+						<br>
+						<button class="remove">הסרה</button>
+					</div>
+				</div>
+			</td>
+		</tr>	
+	</table>
+
+	<!--------personal information------------>
+	<div class="customer-information">
+		<h3>פרטי חיוב</h3>
+		<div class="row">
+			<input type="text" name="customer-name" placeholder="שם מלא">
+			<input type="text" name="customer-adress" placeholder="כתובת מלאה: רחוב, מספר, עיר, מיקוד">
+		</div>
+		<div class="row">
+			<input type="text" name="customer-phoneNum" placeholder="טלפון">
+			<input type="text" name="customer-email" placeholder="כתובת אימייל">
+		</div>
+		<textarea placeholder="הערות להזמנה"></textarea>
+		<div class="checkbox">
+			<input type="checkbox" name="" required="required">
+			<label>קראתי ואני מסכים/ה ל<a href="" style="font-weight: bold">תקנון </a> האתר *</label>
+		</div>
+	</div>
+
+	<!----------shipping----------->
+	<div class="shipping">
+		<div>
+			<h3>שיטת המשלוח</h3>
+		</div>
+
+		<div>
+			<div class="shipping-col">
+			<input type="radio" name="shipping-method" checked="checked" class="free">
+			<label>איסוף עצמי מחדרה  <b style="color: #000">חינם</b></label>
+			</div>
+
+			<div class="shipping-col">
+			<input type="radio" name="shipping-method" class="payed">
+			<label>משלוח בעזרת חברת שילוחים <b style="color: #000">20₪</b></label>
+			</div>
+
+			<div class="shipping-col">
+			<input type="radio" name="shipping-method" class="free">
+			<label>דואר רשום בעזרת דואר ישראל  <b style="color: #000">חינם</b></label>
+			</div>
+		</div>
+	</div>
+
+	<div class="total-price">
+		<table>
+			<tr>
+				<td class="left cart-total-price">220₪</td>
+				<td>סכום ביניים</td>
+			</tr>
+
+			<tr>
+				<td class="left shipping-price">חינם</td>
+				<td>משלוח</td>
+			</tr>
+
+			<tr style="font-weight: bold;">
+				<td class="left total-price-txt">220₪</td>
+				<td>סה"כ</td>
+			</tr>
+		</table>
+
+
+		<div class="cupon">
+			<h4>קופון</h4>
+			<input type="text" name="cupon" placeholder="קופון">
+			<br>
+			<input class="btn" type="submit" name="" value="החל קופון">
+		</div>
+
+	</div>
+
+
+</div>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script>
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+</script>
+</body>
+</html>

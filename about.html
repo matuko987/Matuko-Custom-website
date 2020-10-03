@@ -1,0 +1,177 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | אודות</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+	<div class="about-header">
+		<div class="container">
+			<div class="navbar">
+
+				<div class="logo">
+					<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+				</div>
+
+				<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						echo'<a href="logout.php" class="btn-navbar-login btn-navbar-logout" style="margin-left: 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login btn-navbar" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+				
+				<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><u><a href="about.html">אודות</a></u></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+						<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><a href="products.html">מוצרים </a></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><u><a href="about.html">אודות</a></u></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+						<li><a href="login.html">משתמש</a></li>
+					</ul>
+				</nav>';
+				 }
+				?>
+				<a href="cart.html" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+				<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+			</div>
+		</div>
+
+		<!----------about-------->
+		<div class="about small-container">
+			<h1>אודות של MatukoCustom</h1>
+				<div class="about-me">
+					<h3>על עצמי:</h3>
+					<p>
+						אני שליו מתוקו, תלמיד בן 16, וזהו העסק שלי MatukoCustom. <br>
+						בזמני הפנוי אני גם מנגן בגיטרה ואורגן, כותב שירי מגירה ומתכנת,<br>
+						וכן אני זה שתכנת את כל האתר הזה.<br>
+						אני כבר מגיל צעיר אהבתי לצייר ולהכין יצירות שעם הזמן התפתח<br>
+						גם לכתיבה נגינה עיצוב תכנות והלחנה כי בכל אלה יש מכנה משותף אחד
+						<b>חופש יצירתי!</b>
+					</p>
+
+				</div>
+				<div class="about-me about-business">
+					<h3>על העסק:</h3>
+					<p>
+						ההחנות MatukoCustom היא חנות שמהותה העיקרי הוא עיצובים אישיים של כמעט כל דבר,<br>
+						מנעליים ועד כובעים, מאיורים דיגיטליים ועד בובות פאנקו פופ פיזיות.<br>
+						העסק נפתח מתוך הרצון הבסיסי בעיני של להרוויח כסף ממשהו שאני אוהב לעשות, <br>
+						אני תמיד אהבתי לצייר ולעצב ואני שמח שקיבלתי את ההזדמנות לפתוח עסק שכזה, <br>
+						ומקווה שכל הקונים יהנו מהחנות הזאת בדיוק כמוני😁. <br>
+						החנות מוכרת גם עיצובים שאני הכנתי מראש של חולצות, כובעים, פוסטרים, נעליים וכו'...<br>
+						כמובן במחיר הרבה יותר זול מעיצוב אישי של כל הדברים הללו,<br>
+						אבל מי שלא מוצא משהו שהוא אוהב, תמיד יכול להזמין את השירותים שלי באתר<br>
+						ולהנות מחולצה כובע או נעליים בעיצוב אישי רק בשבילו.<br>
+
+					</p>
+				</div>
+				<div class="about-me">
+					<h3>מטרת העסק:</h3>
+					<p>
+						המטרה המרכזית של העסק היא יום אחד לפתוח סניף שבו אמכור את המוצרים<br>
+						 והשירותים שאני מוכר עכשיו רק עם אווירה של חנות, שירות של חנות, ועובדים בחנות.
+					</p>
+				</div>
+				<div class="about-me">
+					<p>
+						ואתם כמובן מוזמנים לבקר בדף ה<a href="products.html">מוצרים</a> שלי ולהתרשם מהשירותים והמוצרים המוצעים שם,<br>
+						וכמובן להרגיש בנוח לפנות אליי בדף ה<a href="contact.html">צרו קשר</a> עם כל שאלה שעולה על דעתכם.
+					</p>
+				</div>
+
+				<div class="about-me">
+					<b>תודה רבה</b>
+				</div>
+
+				<div class="about-me">
+					<b>שליו מתוקו</b>
+				</div>
+		</div>
+	</div>
+</div>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>
+				MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>
+				מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.
+				</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script type="text/javascript">
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+</script>
+</body>
+</html>

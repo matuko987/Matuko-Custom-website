@@ -1,0 +1,338 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="images/MatukoCustom web logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MatukoCustom | מוצרים</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="add-cart.js" async></script>
+</head>
+<body>
+<div class="header">
+<div class="container">
+	<div class="navbar">
+
+		<div class="logo">
+			<a href="index.HTML"><img src="images/logo.png" width="125px" ></a>
+		</div>
+
+		<div class="navbar-btn">
+				<?php
+					if (isset($_SESSION['userUid'])){
+						echo'<a href="logout.php" class="btn-navbar-login" style="margin-left: 10px;">התנתק</a>';
+					}
+					else{
+					 	echo'<a href="login.html" class="btn-navbar-login" style="margin-left: 10px;">התחבר</a>
+						<a href="register.html" class="btn-navbar" >הרשם</a>';
+					}
+				?>
+			</div>
+		
+		<?php
+				if (isset($_SESSION['userUid'])){
+				$userName = $_SESSION['userUid'];
+				echo'
+				<nav>
+					<ul id="MenuItems">
+						<li><a href="index.HTML"> בית</a></li>
+						<li><u><a href="products.html">מוצרים </a></u></li>
+						<li><a href="portfolio.html">תיק עבודות</a></li>
+						<li><a href="about.html">אודות</a></li>
+						<li><a href="contact.html">צרו קשר</a></li>
+					</ul>
+				</nav>';
+				} else{
+					echo'
+						<nav>
+							<ul id="MenuItems">
+								<li><a href="index.HTML"> בית</a></li>
+								<li><u><a href="products.html">מוצרים </a></u></li>
+								<li><a href="portfolio.html">תיק עבודות</a></li>
+								<li><a href="about.html">אודות</a></li>
+								<li><a href="contact.html">צרו קשר</a></li>
+								<li><a href="login.html">משתמש</a></li>
+							</ul>
+						</nav>';
+				 }
+			?>
+		<a href="cart.html" class="cart"><img src="images/cart.png" width="30px" height="30px"><span>0</span></a>
+		<img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+	</div>
+</div>
+</div>
+
+<!----------fullbody drawing details----------->
+<?php
+	if (isset($_SESSION['userUid'])){
+		echo'
+			<div class="small-container">
+				<div class="small-container single-product">
+					<div class="row">
+						<div class="single">
+							<p><a href="index.html">בית </a>/<a href="products.html"> מוצרים </a>/<a href=""> דיוקן (כל הגוף)</a></p>
+							<h1 class="itm-title">דיוקן אישי (כל הגוף)</h1>
+							<h4 class="itm-price">107₪</h4>
+							<input type="number" value="1" class="product-input">
+							<button type="button" class="add-cart">הוסף לעגלה</button>
+
+							<h3>פרטי המוצר</h3>
+							<p>
+								דיוקן אישי כל הגוף, הדיוקן מצויר מתמונה שתשלח  <br>
+								אליי דרך איזה רשת חברתית שתבחרו, תאומתו שזה באמת<br>
+								אתם בעזרת מספר הקבלה/פרטים אישיים. לקישורים<br>
+								לרשתות החברתיות לחצו <a href="#footer-col-4">כאן<a/>.
+								<br>
+								<br>
+								<b>*כל עוד איכות התמונה גבוהה יותר ככה הפרטים הקטנים בציור יהיו מדויקים יותר*</b>
+							</p>
+						</div>
+
+					 	<div class="single">
+							<img src="images/fullbody_images/fullbody1.png" width="100%" id="ProductImg" class="itm-img">
+
+							<div class="small-img-row">
+								<div class="small-img-col">
+									<img src="images/fullbody_images/fullbody1.png" width="100%" class="small-img">
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!---------title--------->
+				<div class="small-container">
+					<div class="row row-2">
+						<h2>מוצרים דומים</h2>
+					</div>		
+				</div>
+
+			<!----------products---------->
+				<div class="row">
+					<div class="col-4 ">
+						<a href="head_drawing.html"><img src="images/product-1.png"></a>
+						<h4>דיוקן (ראש בלבד)</h4>
+						<p><s>69₪</s> <b>62₪</b></p>
+					</div>
+
+					<div class="col-4 ">
+						<a href="shoulders_drawing.html"><img src="images/product-2.png"></a>
+						<h4>דיוקן (כתפיים ומעלה)</h4>
+						<p><s>79₪</s> <b>72₪</b></p>
+					</div>
+
+					<div class="col-4">
+						<a href="waistup_drawings.html"><img src="images/product-3.png"></a>
+						<h4>דיוקן (מותניים ומעלה)</h4>
+						<p><s>99₪</s> <b>89₪</b></p>
+					</div>
+
+					<div class="col-4">
+						<a href="logos.html"><img src="images/category-2.png"></a>
+						<h4>לוגואים אישיים</h4>
+						<p><s>69₪</s> <b>62₪</b></p>
+					</div>
+				</div>
+			</div>';
+	} else{
+		echo'
+			<div class="small-container">
+				<div class="small-container single-product">
+					<div class="row">
+						<div class="single">
+							<p><a href="index.html">בית </a>/<a href="products.html"> מוצרים </a>/<a href=""> דיוקן (כל הגוף)</a></p>
+							<h1 class="itm-title">דיוקן אישי (כל הגוף)</h1>
+							<h4 class="itm-price">119₪</h4>
+							<input type="number" value="1" class="product-input">
+							<button type="button" class="add-cart">הוסף לעגלה</button>
+
+							<h3>פרטי המוצר</h3>
+							<p>
+								דיוקן אישי כל הגוף, הדיוקן מצויר מתמונה שתשלח  <br>
+								אליי דרך איזה רשת חברתית שתבחרו, תאומתו שזה באמת<br>
+								אתם בעזרת מספר הקבלה/פרטים אישיים. לקישורים<br>
+								לרשתות החברתיות לחצו <a href="#footer-col-4">כאן<a/>.
+								<br>
+								<br>
+								<b>*כל עוד איכות התמונה גבוהה יותר ככה הפרטים הקטנים בציור יהיו מדויקים יותר*</b>
+							</p>
+						</div>
+
+					 	<div class="single">
+							<img src="images/fullbody_images/fullbody1.png" width="100%" id="ProductImg" class="itm-img">
+
+							<div class="small-img-row">
+								<div class="small-img-col">
+									<img src="images/fullbody_images/fullbody1.png" width="100%" class="small-img">
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+								<div class="small-img-col">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!---------title--------->
+				<div class="small-container">
+					<div class="row row-2">
+						<h2>מוצרים דומים</h2>
+					</div>		
+				</div>
+
+			<!----------products---------->
+				<div class="row">
+					<div class="col-4 ">
+						<a href="head_drawing.html"><img src="images/product-1.png"></a>
+						<h4>דיוקן (ראש בלבד)</h4>
+						<p>69₪</p>
+					</div>
+
+					<div class="col-4 ">
+						<a href="shoulders_drawing.html"><img src="images/product-2.png"></a>
+						<h4>דיוקן (כתפיים ומעלה)</h4>
+						<p>79₪</p>
+					</div>
+
+					<div class="col-4">
+						<a href="waistup_drawings.html"><img src="images/product-3.png"></a>
+						<h4>דיוקן (מותניים ומעלה)</h4>
+						<p>99₪</p>
+					</div>
+
+					<div class="col-4">
+						<a href="logos.html"><img src="images/category-2.png"></a>
+						<h4>לוגואים אישיים</h4>
+						<p>69₪</p>
+					</div>
+				</div>
+			</div>';
+	}
+?>
+
+<!--------footer---------->
+<div class="fotter">
+	<div class="container">
+		<div class="row">
+			<div class="footer-col-2">
+				<a href="index.HTML"><img src="images/logo-white.png"></a>
+				<p>MatukoCustom היא אחת החנויות היחידות בארץ המציעות עיצובים אישיים<br>מכל הסוגים, מכובעים ועד נעליים, מדיוקנים ועד פאנקו פופ.</p>
+			</div>
+			<div class="footer-col-3">
+				<h3>קישורים מועילים</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">קופונים</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">תקנון</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">מדינות החזרות</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">הצטרף כחבר  מועדון</a></li>
+				</ul>
+			</div>
+			<div class="footer-col-4">
+				<h3>תעקבו אחרי</h3>
+				<ul>
+					<li><a href="" target="_blank" class="fotter-btn">Facebook</a></li>
+					<li><a href="https://www.instagram.com/matuko_artwroks/" target="_blank" class="fotter-btn">Instagram</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Twitter</a></li>
+					<li><a href="" target="_blank" class="fotter-btn">Youtube</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<p class="copyright">זכויות יוצרים 2020 - שליו מתוקו</p>
+	</div>
+</div>
+
+<!---------just for toggle menu--------->
+<script>
+	var MenuItems = document.getElementById("MenuItems");
+
+	MenuItems.style.maxHeight = "0px";
+
+	function menutoggle(){
+		if(MenuItems.style.maxHeight == "0px")
+			{
+				MenuItems.style.maxHeight = "200px";
+			}
+		else
+			{
+				MenuItems.style.maxHeight = "0px";
+			}
+	}
+
+	var ProductImg = document.getElementById("ProductImg");
+	var SmallImg = document.getElementsByClassName("small-img");
+
+	SmallImg[0].onclick = function()
+	{
+		ProductImg.src = SmallImg[0].src;
+	}
+
+	SmallImg[1].onclick = function()
+	{
+		ProductImg.src = SmallImg[1].src;
+	}
+
+	SmallImg[2].onclick = function()
+	{
+		ProductImg.src = SmallImg[2].src;
+	}
+
+	SmallImg[3].onclick = function()
+	{
+		ProductImg.src = SmallImg[3].src;
+	}
+
+
+	const faders = document.querySelectorAll('.fade-in');
+	const sliders = document.querySelectorAll('.slide-in');
+
+	const appearOptions = {
+		threshold: 0,
+		rootMargin: "0px 0px -250px 0px"
+	};
+
+	const appearOnScroll = new IntersectionObserver
+	(function(
+		entries,
+		appearOnScroll
+	) {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			} else{
+				entry.target.classList.add('appear');
+				appearOnScroll.unobserve(entry.target);
+			}
+		})
+	},
+	appearOptions);
+
+	faders.forEach(fader => {
+		appearOnScroll.observe(fader);
+	});
+
+	sliders.forEach(slider => {
+		appearOnScroll.observe(slider);
+	});
+</script>
+</body>
+</html>
