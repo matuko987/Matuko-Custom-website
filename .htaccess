@@ -1,1 +1,2 @@
-AddType application/javascript
+
+AddType application/x-httpd-php .htm .html
